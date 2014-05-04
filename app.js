@@ -1,33 +1,27 @@
-// server
-var express = require("express"),
- 	app = express(),
- 	http = require('http');
 
- var Browser = require('zombie');
- var assert = require('assert');
- var moment = require('moment');
- moment().format();
-// configuration =====================
-app.use(express.static(__dirname + '/public'));  // set static files location /public/img for users
+var Browser = require('zombie'),
+	assert = require('assert'),
+	fs = require('fs'),
+	h2j = require('html-to-js'),
+	read = fs.readFileSync;
 
-//route
-app.get('/', function(req, res){
-	res.sendfile('public/views/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+var html = read(__dirname+'/public/2nd.html','utf-8');
+var parser = require('html-parser');
+
+objs =[];
+var sanitized = parser.sanitize(html, {
+    elements: [ '!--','div' ,'span','object','ul','li','meta','link','style','a','p','canvas'],
+    attributes: [ 'data'['gamecast'] ],
+    comments: false
 });
 
-//listen 
-var port = Number(process.env.PORT || 5000);
-http.createServer(app).listen(port, function(){
-	console.log("Listening on " + port);
+parser.parse(sanitized, {
+     cdata: function(value) { objs.push(value) },
 });
+var data = objs[4];
+var str = data.toString();
+str = str.slice(str.indexOf('{')-1,str.length-2);
+str=str.substr(0,str.lastIndexOf(';'));
+var json = eval("("+str+")");
 
-
-
-// Browser.visit('http://msn.foxsports.com/nba/gameTrax?gameId=2014050311', function(e,b){
-// 	b.dump(".");
-// }). 
-//   then(function(e,b) {
-//     console.log("Then function");
-//     console.log(b.dump(".lineup-score-data"));
-//   });
-
+console.log(json['data'].gamecast.stats.player);
