@@ -1,0 +1,6 @@
+//tealium universal tag - utag.29 ut4.0.201404232041, Copyright 2014 Tealium.com Inc. All Rights Reserved.
+var _vrq=_vrq||[];try{(function(id,loader,u){try{u=utag.o[loader].sender[id]={}}catch(e){u=utag.sender[id]};u.ev={'view':1};u.qsp_delim="&";u.kvp_delim="=";u.initialized=false;u.id="430";u.automate=true;u.map={};u.extend=[];u.send=function(a,b,c,d,e,f){if(u.ev[a]||typeof u.ev.all!="undefined"){for(d in utag.loader.GV(u.map)){if(typeof b[d]!="undefined"&&b[d]!=""){e=u.map[d].split(",");for(f=0;f<e.length;f++){u[e[f]]=b[d];}}}
+if(!u.initialized){u.initialized=true;_vrq.push(['id',parseInt(u.id)]);_vrq.push(['automate',u.automate]);_vrq.push(['track',function(){}]);}else{_vrtrack({automate:u.automate,refurl:u.refurl,track_id:u.track_id||u.id,track_url:u.track_url||document.URL});}
+(function(){var id='tealium-tag-22005';if(document.getElementById(id)){return;}
+var vrs=document.createElement('script');vrs.type='text/javascript';vrs.async=true;vrs.id=id;vrs.src="http://a.visualrevenue.com/vrs.js";var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(vrs,s);})();}}
+try{utag.o[loader].loader.LOAD(id)}catch(e){utag.loader.LOAD(id)}})('29','foxsports.main');}catch(e){}

@@ -5,6 +5,8 @@ var express = require("express"),
 
  var Browser = require('zombie');
  var assert = require('assert');
+ var moment = require('moment');
+ moment().format();
 // configuration =====================
 app.use(express.static(__dirname + '/public'));  // set static files location /public/img for users
 
@@ -21,6 +23,11 @@ http.createServer(app).listen(port, function(){
 
 
 
-Browser.visit('http://zombie.labnotes.org/', function(e,browser){
-	console.log(browser.site);
-});
+// Browser.visit('http://msn.foxsports.com/nba/gameTrax?gameId=2014050311', function(e,b){
+// 	b.dump(".");
+// }). 
+//   then(function(e,b) {
+//     console.log("Then function");
+//     console.log(b.dump(".lineup-score-data"));
+//   });
+
