@@ -24,4 +24,4 @@ str = str.slice(str.indexOf('{')-1,str.length-2);
 str=str.substr(0,str.lastIndexOf(';'));
 var json = eval("("+str+")");
 
-console.log(json['data'].gamecast.stats.player);
+console.log(json['data'].gamecast.stats.player); 
