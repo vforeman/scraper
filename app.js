@@ -9,13 +9,13 @@ var html = read(__dirname+'/public/2nd.html','utf-8');
 var parser = require('html-parser');
 
 objs =[];
-var sanitized = parser.sanitize(html, {
-    elements: [ '!--','div' ,'span','object','ul','li','meta','link','style','a','p','canvas'],
-    attributes: [ 'data'['gamecast'] ],
-    comments: false
-});
+// var sanitized = parser.sanitize(html, {
+//     elements: [ '!--','div' ,'span','object','ul','li','meta','link','style','a','p','canvas'],
+//     attributes: [ 'data'['gamecast'] ],
+//     comments: false
+// });
 
-parser.parse(sanitized, {
+parser.parse(html, {
      cdata: function(value) { objs.push(value) },
 });
 var data = objs[4];
@@ -24,4 +24,4 @@ str = str.slice(str.indexOf('{')-1,str.length-2);
 str=str.substr(0,str.lastIndexOf(';'));
 var json = eval("("+str+")");
 
-console.log(json['data'].gamecast.stats.player); 
+console.log(json['data'].gamecast); 
