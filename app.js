@@ -7,7 +7,7 @@ var Browser = require('zombie'),
 
 var html = read(__dirname+'/public/2nd.html','utf-8');
 var parser = require('html-parser');
-
+console.log(html);
 objs =[];
 // var sanitized = parser.sanitize(html, {
 //     elements: [ '!--','div' ,'span','object','ul','li','meta','link','style','a','p','canvas'],
